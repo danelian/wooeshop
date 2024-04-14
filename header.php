@@ -10,6 +10,8 @@
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
 
+<?php $wooeshop_theme_options = wooeshop_theme_options(); ?>
+
 <div class="wrapper">
 
 <header class="header">
@@ -18,28 +20,36 @@
       <div class="row">
         <div class="col-6 col-sm-4">
           <div class="header-top-phone d-flex align-items-center h-100">
+            <?php if (! empty($wooeshop_theme_options['phone'])) : ?>
             <i class="fa-solid fa-mobile-screen"></i>
-            <a href="tel:+1234567890" class="ms-2">123-456-7890</a>
+            <a href="tel:+<?php echo str_replace(array(' ', '-', '+', '(', ')'), array('','','','',''), $wooeshop_theme_options['phone']); ?>" class="ms-2"><?php echo $wooeshop_theme_options['phone']; ?></a>
+            <?php endif; ?>
           </div>
         </div>
 
         <div class="col-sm-4 d-none d-sm-block">
           <ul class="social-icons d-flex justify-content-center">
+            <?php if (! empty($wooeshop_theme_options['youtube'])) : ?>
             <li>
-              <a href="#">
+              <a href="<?php echo $wooeshop_theme_options['youtube']; ?>">
                 <i class="fa-brands fa-youtube"></i>
               </a>
             </li>
+            <?php endif; ?>
+            <?php if (! empty($wooeshop_theme_options['facebook'])) : ?>
             <li>
-              <a href="#">
+              <a href="<?php echo $wooeshop_theme_options['facebook']; ?>">
                 <i class="fa-brands fa-facebook-f"></i>
               </a>
             </li>
+            <?php endif; ?>
+            <?php if (! empty($wooeshop_theme_options['instagram'])) : ?>
             <li>
-              <a href="#">
+              <a href="<?php echo $wooeshop_theme_options['instagram']; ?>">
                 <i class="fa-brands fa-instagram"></i>
               </a>
             </li>
+            <?php endif; ?>
           </ul>
         </div>
 
@@ -137,59 +147,6 @@
               'walker' => new Wooeshop_Header_Menu(),
             ))
           ?>
-
-          <!-- <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="index.html">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">About</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Contact</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Payment</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Delivery</a>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                aria-expanded="false" data-bs-auto-close="outside">
-                Catalog
-              </a>
-              <ul class="dropdown-menu dropdown-menu-end">
-                <li>
-                  <a class="dropdown-item" href="category.html">Shoes</a>
-                </li>
-                <li>
-                  <a class="dropdown-item" href="category.html">Jeans</a>
-                </li>
-                <li class="nav-item dropend">
-                  <a class="dropdown-item dropdown-toggle" href="#" data-bs-toggle="dropdown"
-                    data-bs-auto-close="outside">Sportswear</a>
-                  <ul class="dropdown-menu dropdown-menu-end">
-                    <li>
-                      <a class="dropdown-item" href="category.html">Men's Sportswear</a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="category.html">Women's Sportswear</a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="category.html">Baby's Sportswear</a>
-                    </li>
-                  </ul>
-                </li>
-                <li>
-                  <a class="dropdown-item" href="category.html">Coat</a>
-                </li>
-                <li>
-                  <a class="dropdown-item" href="category.html">Shirts</a>
-                </li>
-              </ul>
-            </li>
-          </ul> -->
         </div>
       </div>
 

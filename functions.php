@@ -26,5 +26,10 @@ add_action('wp_enqueue_scripts', function() {
   wp_enqueue_script('wooeshop-main', get_template_directory_uri() . '/assets/js/main.js', array(), false, true);
 });
 
+function wooeshop_dump($data) {
+  echo "<pre>" . print_r($data, 1) . "</pre>";
+}
+
 require_once get_template_directory() . '/incs/woocommerce-hooks.php';
-require_once get_template_directory() . '/incs/incs/class-wooeshop-header-menu.php';
+require_once get_template_directory() . '/incs/class-wooeshop-header-menu.php';
+require_once get_template_directory() . '/incs/customizer.php';
