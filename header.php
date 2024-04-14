@@ -91,7 +91,7 @@
       <div class="row align-items-center">
 
         <div class="col-sm-6">
-          <a href="index.html" class="header-logo h1">E-Shop</a>
+          <a href="<?php echo home_url('/'); ?>" class="header-logo h1"><?php bloginfo('name'); ?></a>
         </div>
 
         <div class="col-sm-6 mt-2 mt-md-0">
@@ -129,7 +129,16 @@
             aria-label="Close"></button>
         </div>
         <div class="offcanvas-body">
-          <ul class="navbar-nav">
+          <?php 
+            wp_nav_menu( array(
+              'theme_location' => 'header_menu',
+              'container' => false,
+              'menu_class' => 'navbar-nav',
+              'walker' => new Wooeshop_Header_Menu(),
+            ))
+          ?>
+
+          <!-- <ul class="navbar-nav">
             <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="index.html">Home</a>
             </li>
@@ -180,7 +189,7 @@
                 </li>
               </ul>
             </li>
-          </ul>
+          </ul> -->
         </div>
       </div>
 

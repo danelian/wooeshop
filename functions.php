@@ -1,8 +1,15 @@
 <?php 
 
 add_action('after_setup_theme', function() {
+  load_theme_textdomain('wooeshop', get_template_directory_uri() . '/languages');
   add_theme_support('woocommerce');
   add_theme_support('title-tag');
+
+  register_nav_menus(
+    array(
+      'header_menu' => __('Header menu', 'wooeshop')
+    )
+  );
 });
 
 add_action('wp_enqueue_scripts', function() {
@@ -20,3 +27,4 @@ add_action('wp_enqueue_scripts', function() {
 });
 
 require_once get_template_directory() . '/incs/woocommerce-hooks.php';
+require_once get_template_directory() . '/incs/incs/class-wooeshop-header-menu.php';
